@@ -1,6 +1,6 @@
 export type Record = {readonly [name: string]: string};
 
-export function tableToRecords(table: string[][]): ReadonlyArray<Record> {
+export function tableToRecords(table: ReadonlyArray<ReadonlyArray<string>>): ReadonlyArray<Record> {
     let header = table[0];
 
     let objects: {[name: string]: string}[] = [];
@@ -20,7 +20,7 @@ export function tableToRecords(table: string[][]): ReadonlyArray<Record> {
     return Object.freeze(objects);
 }
 
-export function recordsToTable(records: Record[]): ReadonlyArray<ReadonlyArray<string>> {
+export function recordsToTable(records: ReadonlyArray<Record>): ReadonlyArray<ReadonlyArray<string>> {
     if (records.length === 0) {
         return [];
     }
