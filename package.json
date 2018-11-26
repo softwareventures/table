@@ -12,5 +12,8 @@
   "bugs": {
     "url": "https://github.com/softwareventures/tables/issues"
   },
-  "homepage": "https://github.com/softwareventures/tables"
+  "homepage": "https://github.com/softwareventures/tables",
+  "devDependencies": {
+    "typescript": "^3.1.6"
+  }
 }
