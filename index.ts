@@ -4,7 +4,11 @@ export type Record = Dictionary<string>;
 
 export type ReadonlyRecord = ReadonlyDictionary<string>;
 
-export function tableToRecords(table: ReadonlyArray<ReadonlyArray<string>>): Record[] {
+export type Table = string[][];
+
+export type ReadonlyTable = ReadonlyArray<ReadonlyArray<string>>;
+
+export function tableToRecords(table: ReadonlyTable): Record[] {
     const header = table[0];
 
     const records: Record[] = [];
@@ -24,7 +28,7 @@ export function tableToRecords(table: ReadonlyArray<ReadonlyArray<string>>): Rec
     return records;
 }
 
-export function recordsToTable(records: ReadonlyArray<ReadonlyRecord>): string[][] {
+export function recordsToTable(records: ReadonlyArray<ReadonlyRecord>): Table {
     if (records.length === 0) {
         return [];
     }
