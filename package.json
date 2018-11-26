@@ -13,6 +13,9 @@
     "url": "https://github.com/softwareventures/tables/issues"
   },
   "homepage": "https://github.com/softwareventures/tables",
+  "scripts": {
+    "prepare": "tslint --project . && tsc"
+  },
   "devDependencies": {
     "@softwareventures/tslint-rules": "^0.5.2",
     "tslint": "^5.11.0",
