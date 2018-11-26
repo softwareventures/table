@@ -1,4 +1,6 @@
-export type Record = { readonly [name: string]: string };
+import {ReadonlyDictionary} from "dictionary-types";
+
+export type Record = ReadonlyDictionary<string>;
 
 export function tableToRecords(table: ReadonlyArray<ReadonlyArray<string>>): ReadonlyArray<Record> {
     const header = table[0];
