@@ -5,21 +5,21 @@ export type Record = ReadonlyDictionary<string>;
 export function tableToRecords(table: ReadonlyArray<ReadonlyArray<string>>): ReadonlyArray<Record> {
     const header = table[0];
 
-    const objects: Array<{ [name: string]: string }> = [];
+    const records: Array<{ [name: string]: string }> = [];
 
     for (let i = 1; i < table.length; ++i) {
         const row = table[i];
-        const object: { [name: string]: string } = {};
+        const record: { [name: string]: string } = {};
 
         for (let j = 0; j < row.length && j < header.length; ++j) {
             const name = header[j];
-            object[name] = row[j];
+            record[name] = row[j];
         }
 
-        objects.push(Object.freeze(object));
+        records.push(Object.freeze(record));
     }
 
-    return Object.freeze(objects);
+    return Object.freeze(records);
 }
 
 export function recordsToTable(records: ReadonlyArray<Record>): ReadonlyArray<ReadonlyArray<string>> {
