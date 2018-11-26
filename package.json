@@ -2,7 +2,7 @@
   "name": "@softwareventures/table",
   "version": "0.1.0",
   "description": "Types and functions for processing unstructured tabular data",
-  "repository": "github:softwareventures/tables.git",
+  "repository": "github:softwareventures/table",
   "keywords": [
     "tables",
     "TypeScript"
@@ -10,9 +10,9 @@
   "author": "Daniel Cassidy <mail@danielcassidy.me.uk>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/softwareventures/tables/issues"
+    "url": "https://github.com/softwareventures/table/issues"
   },
-  "homepage": "https://github.com/softwareventures/tables",
+  "homepage": "https://github.com/softwareventures/table",
   "scripts": {
     "prepare": "tslint --project . && tsc"
   },
