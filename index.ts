@@ -1,35 +1,37 @@
-import {ReadonlyDictionary} from "dictionary-types";
+import {Dictionary, ReadonlyDictionary} from "dictionary-types";
 
-export type Record = ReadonlyDictionary<string>;
+export type Record = Dictionary<string>;
 
-export function tableToRecords(table: ReadonlyArray<ReadonlyArray<string>>): ReadonlyArray<Record> {
+export type ReadonlyRecord = ReadonlyDictionary<string>;
+
+export function tableToRecords(table: ReadonlyArray<ReadonlyArray<string>>): Record[] {
     const header = table[0];
 
-    const records: Array<{ [name: string]: string }> = [];
+    const records: Record[] = [];
 
     for (let i = 1; i < table.length; ++i) {
         const row = table[i];
-        const record: { [name: string]: string } = {};
+        const record: Record = {};
 
         for (let j = 0; j < row.length && j < header.length; ++j) {
             const name = header[j];
             record[name] = row[j];
         }
 
-        records.push(Object.freeze(record));
+        records.push(record);
     }
 
-    return Object.freeze(records);
+    return records;
 }
 
-export function recordsToTable(records: ReadonlyArray<Record>): ReadonlyArray<ReadonlyArray<string>> {
+export function recordsToTable(records: ReadonlyArray<ReadonlyRecord>): string[][] {
     if (records.length === 0) {
         return [];
     }
 
     const headers = Object.keys(records[0]);
 
-    return Object.freeze([headers]
+    return [headers]
         .concat(records
             .map(record => headers
                 .map(header => {
@@ -38,5 +40,5 @@ export function recordsToTable(records: ReadonlyArray<Record>): ReadonlyArray<Re
                     } else {
                         throw new Error("Inconsistent records.");
                     }
-                }))));
+                })));
 }
