@@ -1,17 +1,19 @@
+import {notNull} from "@softwareventures/nullable";
+
 export type Table = string[][];
 
 export type ReadonlyTable = ReadonlyArray<ReadonlyArray<string>>;
 
 export function* tableToRecords(table: ReadonlyTable): Iterable<Record<string, string>> {
-    const header = table[0];
+    const header = notNull(table[0]);
 
     for (let i = 1; i < table.length; ++i) {
-        const row = table[i];
+        const row = notNull(table[i]);
         const record: Record<string, string> = {};
 
         for (let j = 0; j < row.length && j < header.length; ++j) {
-            const name = header[j];
-            record[name] = row[j];
+            const name = notNull(header[j]);
+            record[name] = notNull(row[j]);
         }
 
         yield record;
@@ -23,14 +25,14 @@ export function recordsToTable(records: ReadonlyArray<Readonly<Record<string, st
         return [];
     }
 
-    const headers = Object.keys(records[0]);
+    const headers = Object.keys(notNull(records[0]));
 
     return [headers]
         .concat(records
             .map(record => headers
                 .map(header => {
                     if (header in record) {
-                        return record[header];
+                        return notNull(record[header]);
                     } else {
                         throw new Error("Inconsistent records.");
                     }

@@ -481,6 +481,13 @@
     lodash "^4.17.4"
     read-pkg-up "^7.0.0"
 
+"@softwareventures/nullable@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@softwareventures/nullable/-/nullable-3.0.0.tgz#979045c99e7c8a9055cb25c3c5cb5b9edfc50085"
+  integrity sha512-kgYOGJHzgZl0QGqMqbRe34i5VaRQUsG+X9AcblJL1lGDq+npLsCS974VSJmOBxnSqIQ5dcgah+zBxHndH8qzfg==
+  dependencies:
+    tslib "2.4.0"
+
 "@softwareventures/semantic-release-config@3.0.0":
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/@softwareventures/semantic-release-config/-/semantic-release-config-3.0.0.tgz#11bc1edbe4de1cd37a79dcf050d5be6e8467ada0"
