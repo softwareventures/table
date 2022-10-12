@@ -2,10 +2,8 @@ export type Table = string[][];
 
 export type ReadonlyTable = ReadonlyArray<ReadonlyArray<string>>;
 
-export function tableToRecords(table: ReadonlyTable): Array<Record<string, string>> {
+export function* tableToRecords(table: ReadonlyTable): Iterable<Record<string, string>> {
     const header = table[0];
-
-    const records: Array<Record<string, string>> = [];
 
     for (let i = 1; i < table.length; ++i) {
         const row = table[i];
@@ -16,10 +14,8 @@ export function tableToRecords(table: ReadonlyTable): Array<Record<string, strin
             record[name] = row[j];
         }
 
-        records.push(record);
+        yield record;
     }
-
-    return records;
 }
 
 export function recordsToTable(records: ReadonlyArray<Readonly<Record<string, string>>>): Table {
