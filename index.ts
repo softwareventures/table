@@ -1,8 +1,6 @@
-import {Dictionary, ReadonlyDictionary} from "dictionary-types";
+export type Record = { [key: string]: string };
 
-export type Record = Dictionary<string>;
-
-export type ReadonlyRecord = ReadonlyDictionary<string>;
+export type ReadonlyRecord = { readonly [key: string]: string };
 
 export type Table = string[][];
 
