@@ -1,19 +1,15 @@
-export type Record = { [key: string]: string };
-
-export type ReadonlyRecord = { readonly [key: string]: string };
-
 export type Table = string[][];
 
 export type ReadonlyTable = ReadonlyArray<ReadonlyArray<string>>;
 
-export function tableToRecords(table: ReadonlyTable): Record[] {
+export function tableToRecords(table: ReadonlyTable): Array<Record<string, string>> {
     const header = table[0];
 
-    const records: Record[] = [];
+    const records: Array<Record<string, string>> = [];
 
     for (let i = 1; i < table.length; ++i) {
         const row = table[i];
-        const record: Record = {};
+        const record: Record<string, string> = {};
 
         for (let j = 0; j < row.length && j < header.length; ++j) {
             const name = header[j];
@@ -26,7 +22,7 @@ export function tableToRecords(table: ReadonlyTable): Record[] {
     return records;
 }
 
-export function recordsToTable(records: ReadonlyArray<ReadonlyRecord>): Table {
+export function recordsToTable(records: ReadonlyArray<Readonly<Record<string, string>>>): Table {
     if (records.length === 0) {
         return [];
     }
